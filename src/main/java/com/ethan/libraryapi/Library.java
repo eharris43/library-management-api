@@ -85,6 +85,17 @@ public class Library implements Serializable {
         return null;
     }
 
+    public boolean removeMemberByID(int id){
+        Member member = findMemberByID(id);
+
+        if(member == null){
+            return false;       
+        }
+        
+        members.remove(member);
+        return true;
+    }
+
     public Member returnBorrowedBookFromMember(Book book1)
     {
         if(book1.isAvailable()){
@@ -172,6 +183,23 @@ public class Library implements Serializable {
 
 
      } 
+
+    public boolean updateBook(int id, Book updatedBook){
+        Book existingBook = findBookByID(id);
+
+        if(existingBook == null ) {
+            return false;
+        }
+
+        boolean wasAvailable = existingBook.isAvailable();
+
+        books.remove(existingBook);
+
+        updatedBook.setAvailable(wasAvailable);
+        books.add(updatedBook);
+
+        return true;
+    }
 
 
 

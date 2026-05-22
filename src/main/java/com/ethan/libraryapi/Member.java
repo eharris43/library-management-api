@@ -1,6 +1,7 @@
 package com.ethan.libraryapi;
 
 import java.util.List;
+
 import java.io.*;
 
 import java.util.ArrayList;
@@ -9,9 +10,10 @@ import java.util.ArrayList;
 public class Member implements Serializable{
    
     private String username; 
-    private final  int memberID ;
+    private int memberID ;
     private List<Book>  borrowedBooks;
 
+    public Member(){}
 
     public Member(String username, int memberID )
     {
@@ -63,4 +65,6 @@ public class Member implements Serializable{
         return String.format("Member Name: %-15s\t ID: %d\t Number of Borrowed Books: %d Books Borrowed: %s", 
                 username , memberID ,borrowedBooks.size(), titles.toString());
     }
+
+
 }
